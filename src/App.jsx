@@ -2,14 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Call_api from './api'
+import Api_App from './api'
+import app from "./Movies"
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div>
-      <Call_api /> 
+      <Api_App />
     </div>
   )
 }

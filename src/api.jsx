@@ -26,29 +26,6 @@ function CallMovies({ movies }) {
     let titles = [];
     let posters = [];
     let id =[];
-    var people = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        
-    ];
 
 // Assuming movies is an array of movie objects
 
@@ -56,19 +33,7 @@ for (let i = 0; i < movies.length; i++) {
     titles.push(movies[i].title);
     id.push(movies[i].id)
     posters.push("https://image.tmdb.org/t/p/original/" + movies[i].poster_path);
-    fetch('https://api.themoviedb.org/3/movie/' + movies[i].id + '/credits?language=en-US&api_key=4ae47a0d2ad213839e57a67d3f92c791')
-  .then(response => response.json())
-  .then(response => { cast(response)
-  })
-  .catch(err => console.error(err));
-    function cast(response){
-      // console.log(response.length);
-      
-        for (let j =0; j < 5; j++){
-           people[i].push(response.cast[j].name)
-        }
     
-    }
 }
 // console.log(people);
 // Combine titles and posters into a 2D array
@@ -76,19 +41,19 @@ for (let i = 0; i < movies.length; i++) {
 let combinedArray = [];
 
 for (let i = 0; i < titles.length; i++) {
-    combinedArray.push([titles[i], posters[i], people[i], id[i]]);
+    combinedArray.push([titles[i], posters[i], id[i]]);
 }
 
 
   let casterlester;
   return (
-    <div>
-      {combinedArray.map((item, key) => <div>
-        <Link to={`./detail?id=${item[3]}`} >Learn More</Link>
-          <div>{item[3]}</div>
-        <li key={key}>{item[0]}</li>
-        
-      <img width="150" src={item[1]}></img>
+    <div id="body">
+      {combinedArray.map((item, key) => 
+      <div class="item">
+        <Link to={`./detail?id=${item[2]}`} >
+          <p class="link-text" key={key}>{item[0]}</p>
+          <img width="150" src={item[1]}></img><br />
+        </Link>
       </div>)}
     </div>
   );

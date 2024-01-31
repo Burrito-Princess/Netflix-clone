@@ -1,0 +1,20 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client'
+
+fetch('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=true&language=en-US&page=1&sort_by=popularity.desc&api_key=4ae47a0d2ad213839e57a67d3f92c791')
+        .then(response => response.json())
+        .then(response => Call_movies(response))
+        .catch(err => console.error(err));
+
+
+        function Call_movies(response) {
+            console.log(response.results[0].title);
+            const movies = response.results[0].title || "No movie title available";
+            return (
+                <div>
+                    {response.results[0].title}
+                </div>
+            );
+        }
+
+export default Call_movies;

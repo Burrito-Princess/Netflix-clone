@@ -40,7 +40,7 @@ function Cast_api() {
                     <br />
                     <img class="img" src={poster}></img>
                     <br />
-                    <a class="link-text button" href={credit.homepage}>More Info</a>
+                    <a class="link-text button" target="_blank" href={credit.homepage}>More Info</a>
                     <div class="overview">{credit.overview}</div>
                     <br />
                                         
